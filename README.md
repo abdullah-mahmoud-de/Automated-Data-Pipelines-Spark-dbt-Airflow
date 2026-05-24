@@ -6,6 +6,48 @@ You will build an automated data pipeline using Python, Apache Spark for distrib
 
 ---
 
+## Project Structure
+
+The repository follows a modular architecture, separating configuration, extraction, transformation, and orchestration layers to ensure scalability and maintainability.
+
+```text
+spark-dbt-airflow-pipeline/
+│
+├── dags/                           # Airflow Orchestration
+│   └── airflow_dag.py              # Defines the DAG, task dependencies, and retries
+│
+├── src/                            # Core Python Application Logic
+│   ├── config.py                   # Environment variable loading & configuration classes
+│   ├── extractors.py               # Connectors for PostgreSQL, REST API, and CSV files
+│   ├── transformers.py             # Data quality validation and SCD2 processing logic
+│   └── pipeline.py                 # Main execution script tying modules together
+│
+├── dbt_project/                    # dbt Data Modeling
+│   ├── models/                     # SQL models for transformations and fact/dimension tables
+│   ├── snapshots/                  # dbt snapshots for automated SCD2 historical tracking
+│   ├── tests/                      # dbt data tests (null checks, unique constraints)
+│   └── dbt_project.yml             # Main dbt configuration file
+│
+├── spark_jobs/                     # Distributed Processing
+│   └── processing_scripts.py       # PySpark scripts for handling large-scale data joins
+│
+├── tests/                          # Unit Testing
+│   ├── test_extractors.py          # Pytest definitions for source connectors
+│   └── test_transformers.py        # Pytest definitions for data validation and SCD2 logic
+│
+├── data/                           # Local Data Storage (Ignored by Git)
+│   ├── raw/                        # Raw source files (e.g., product_catalog.csv)
+│   └── processed/                  # Transformed output files (if saving locally)
+│
+├── .env                  # Template for required environment variables
+├── .gitignore                      # Specifies intentionally untracked files
+├── requirements.txt                # Python package dependencies
+└── README.md                       # Project documentation
+```
+---
+![Project Architecture Diagram](Architecture-diagram.jpg)
+---
+
 ### Functional Requirements
 
 Your pipeline must implement the following capabilities:
