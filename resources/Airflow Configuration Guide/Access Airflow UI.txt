@@ -1,0 +1,22 @@
+URL: http://localhost:8080
+Username: admin
+Password: admin
+
+Key Airflow Concepts for Your DAG
+Task Dependencies: Use >> operator to set task order:
+
+task_a >> task_b >> task_c
+
+Error Handling: Configure in default_args:
+
+default_args = {
+    'retries': 2,
+    'retry_delay': timedelta(minutes=5),
+    'email_on_failure': True
+}
+
+Task Types You'll Use:
+
+PythonOperator: Execute Python functions
+BashOperator: Run shell commands
+FileSensor: Wait for files to appear

@@ -1,0 +1,13 @@
+project/
+├── dags/
+│   └── airflow_dag.py          # Your DAG file
+├── plugins/
+├── data/
+│   ├── input/
+│   │   └── products.csv
+│   └── output/
+├── config.py
+├── extractors.py
+├── transformers.py
+├── pipeline.py
+└── .env
