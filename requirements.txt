@@ -1,0 +1,5 @@
+apache-airflow==2.9.1
+pyspark==3.5.1
+dbt-core==1.7.0
+dbt-postgres==1.7.0  # Change based on your target DWH (e.g., dbt-snowflake, dbt-bigquery)
+pytest==8.2.0

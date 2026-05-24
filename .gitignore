@@ -1,0 +1,29 @@
+cat <<EOT >> .gitignore
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# Data
+data/
+*.csv
+*.json
+*.parquet
+
+# Airflow
+logs/
+airflow.cfg
+airflow.db
+
+# dbt
+dbt_project/target/
+dbt_project/dbt_packages/
+dbt_project/logs/
+profiles.yml
+
+# Spark
+spark-warehouse/
+metastore_db/
+EOT
