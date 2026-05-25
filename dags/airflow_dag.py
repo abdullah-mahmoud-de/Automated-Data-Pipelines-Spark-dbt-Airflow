@@ -34,7 +34,7 @@ with DAG(
     'automated_data_pipeline',
     default_args=default_args,
     description='Daily ETL pipeline with Data Quality Gates and SCD2 Logic',
-    schedule_interval='@daily', # Runs once a day at midnight
+    schedule='@daily',         # <-- THIS IS THE ONLY CHANGE
     catchup=False,
     tags=['coursera', 'etl']
 ) as dag:
